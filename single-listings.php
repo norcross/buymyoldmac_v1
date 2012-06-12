@@ -47,7 +47,7 @@ get_header();
 				echo '<li class="price">Price: $'.number_format($price, 2, '.', ',').'</li>';
 
 			if (!empty($ssize))
-				echo '<li class="size">Screen Size: '.$price.'</li>';
+				echo '<li class="size">Screen Size: '.$ssize.'</li>';
 
 			if (!empty($display))
 				echo '<li class="display">Display: '.$display.'</li>';
