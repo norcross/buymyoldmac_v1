@@ -31,10 +31,11 @@ require_once('lib/rkv-cleanup.php');	// cleanup
 /* custom scripts */
 
 function bfg_scripts() { 
-	if (is_singular('listings') ) :
+	if (is_singular('listings') ) {
 		wp_enqueue_script('colorbox', CHILD_URL.'/lib/js/jquery.colorbox.js', array('jquery'), null, TRUE);
+		wp_enqueue_script('colorbox-settings', CHILD_URL.'/lib/js/bmm.colorbox.js', array('jquery'), null, TRUE);
 		wp_enqueue_style( 'colorbox-style', CHILD_URL . '/lib/css/colorbox.css', false, null, 'all' );
-	endif;
+	}
 		
 	wp_enqueue_script('bfg_custom_scripts', CHILD_URL.'/lib/js/bmm.init.js', array('jquery'), null, TRUE);
 
@@ -108,13 +109,7 @@ function rkv_set_taxonomy($entry, $form){
 	wp_set_post_terms( $post->ID, $accessor, 'listing-accessory', true );	
 }
 
-function rkv_upload_path($path_info, $form_id){
-     $path_info['path'] = '/home/bandvine/public_html/buymyoldmac.com/listing_img/';
-     $path_info['url']	= 'http://buymyoldmac.com/listing_img/';
-     return $path_info;
-}
 
 add_action('gform_pre_submission', 'rkv_listing_title_fix', 10, 2);
 add_action('gform_post_data', 'rkv_close_comments');
 add_action('gform_post_submission', 'rkv_set_taxonomy', 10, 2);
-add_filter('gform_upload_path', 'rkv_upload_path', 20, 2);
