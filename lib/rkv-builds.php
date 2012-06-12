@@ -1,20 +1,21 @@
 <?php
 
-function rkv_listing_block() {
+// home page recent listings
+function rkv_recent_home() {
 
 		$post_type	= 'listings';
 		$tax		= 'listing-type';
 		$tax_terms	= get_terms( $tax );
 		if ($tax_terms) {
-			echo '<h2>Recent Listings</h2>';
+			echo '<h2>Recent Listings By Type</h2>';
 			foreach ($tax_terms  as $tax_term) {
 			$args = array(
 				'post_type'			=> $post_type,
 				"$tax"				=> $tax_term->slug,
 				'post_status'		=> 'publish',
-				'posts_per_page'	=> -1,
-				'order'				=> 'ASC',
-				'orderby'			=> 'menu_order'
+				'posts_per_page'	=> 10,
+				'order'				=> 'DESC',
+				'orderby'			=> 'date'
 			);
 		
 				$listing_query = null;
@@ -23,22 +24,28 @@ function rkv_listing_block() {
 				if( $listing_query->have_posts() ) : ?>
                 
 				<div class="listing_block">
-                <h5 id="rs-<?php echo $tax_term->slug; ?>" class="rs_head"><?php echo $tax_term->name; ?></h5>
+                <h5 id="<?php echo $tax_term->slug; ?>" class="ls_recent_title"><?php echo $tax_term->name; ?></h5>
 
-					<ul class="resource_list">
 					<?php
+					echo '<ul class="listing_list">';
                     while ( $listing_query->have_posts() ) : $listing_query->the_post();
 					global $post;
+					$model	= get_the_terms( $post->ID, 'listing-type');
 					$price	= get_post_meta( $post->ID, '_rkv_bmm_price', true);
+					$price	= preg_replace('/[^0-9]/Uis', '', $price);
 					$link	= get_permalink( $post->ID );
-					$date	= get_the_date( 'd/m/Y' );
-					?>
-		
-					<?php endwhile; // end of loop ?>
-		
-					</ul>
-				<?php else : ?>
-				<?php endif; // if have_posts()
+					$date	= get_the_date( 'm/d/Y' );
+
+					// build out listing columns
+						echo '<li class="single_listing_home">';
+						echo '<span class="price"><a href="'.$link.'" title="'.$model[0]->name.'">$'.number_format($price, 2, '.', ',').'</a></span>';
+						echo '<span class="date"><a href="'.$link.'" title="'.$model[0]->name.'">'.$date.'</a></span>';
+						echo '</li>';
+
+					endwhile;
+					echo '</ul>';
+					else : 
+					endif; // if have_posts()
 				echo '</div>';
 				wp_reset_query();
 		
@@ -47,7 +54,7 @@ function rkv_listing_block() {
 	
 }
 
-// image resizer
+// image gallery for single listing
 
 function rkv_listing_gallery() {
 
@@ -62,24 +69,32 @@ function rkv_listing_gallery() {
 	// set count for image relations
 	$count = 0;
 
-	// output gallery
-	foreach ($images as $image) {
-		$image_id	= $image->ID;
-		$image_name	= $image->post_title;
-		$image_desc	= $image->post_content;
-		$thumb		= wp_get_attachment_image_src( $image_id, 'bfg_medium_img' );
-		$full		= wp_get_attachment_image_src( $image_id, 'large' );
-		
-		// begin single images
-		echo '<div class="image_single">';
-		echo '<a href="'.$full[0].'">';
-		echo '<img src="'.$thumb[0].'" class="listing_img">';
-		echo '</a>';
-		echo '</div>';
-		// end each image output
-	}
-	// end output gallery
+	if(!$images)
+		return;
+	
+	if($images) { 
+		echo '<div class="listing_images listing_block">';
+		echo '<h3>Image Gallery</h3>';
 
+		// output gallery
+		foreach ($images as $image) {
+			$image_id	= $image->ID;
+			$image_name	= $image->post_title;
+			$image_desc	= $image->post_content;
+			$thumb		= wp_get_attachment_image_src( $image_id, 'bfg_medium_img' );
+			$full		= wp_get_attachment_image_src( $image_id, 'large' );
+			
+			// begin single images
+			echo '<div class="image_single">';
+			echo '<a href="'.$full[0].'" class="listing_img">';
+			echo '<img src="'.$thumb[0].'">';
+			echo '</a>';
+			echo '</div>';
+			// end each image output
+		}
+	// end output gallery
+	echo '</div>';
+	}
 }
 
 

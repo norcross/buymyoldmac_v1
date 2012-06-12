@@ -17,11 +17,6 @@ get_header();
             $phone		= get_post_meta($post->ID, '_rkv_bmm_phone', true);
             $pterms		= get_post_meta($post->ID, '_rkv_bmm_pterms', true);
 
-            $image_1	= get_post_meta($post->ID, '_rkv_bmm_image_1', true);
-            $image_2	= get_post_meta($post->ID, '_rkv_bmm_image_2', true);
-            $image_3	= get_post_meta($post->ID, '_rkv_bmm_image_3', true);
-            $image_4	= get_post_meta($post->ID, '_rkv_bmm_image_4', true);
-
 			// text cleanup for condition
             $condition	= get_post_meta($post->ID, '_rkv_bmm_cond', true);
 			$condition	= str_replace('-', ' ', $condition);
@@ -83,16 +78,7 @@ get_header();
             <?php the_content(); ?>
             </div>
 
-            <?php
-
-			// check for first image before creating gallery block
-   			if (!empty($image_1) ) {
-				echo '<div class="listing_images listing_block"><h3>Images</h3>';
-				echo rkv_listing_gallery();
-				echo '</div>';
-			}
-
-			?>
+            <?php echo rkv_listing_gallery(); ?>
 
     
         </div>

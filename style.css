@@ -745,14 +745,88 @@ h6, .h6 {
 *********************/
 #content {}
 
-
-
 #content img {
-max-width: 95%;
-height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
+/*********************
+=3ga HOME PAGE SPECIFIC
+*********************/
 
+#inner #recent_listings {
+	clear:both;
+	overflow:hidden;
+	}
+
+#inner #recent_listings h2 {
+	text-align:center;
+	}
+
+#inner #recent_listings .listing_block {
+	float:left;
+	width:200px;
+	padding:0 15px;
+}
+
+#inner #recent_listings .listing_block h5 {
+	text-align:center;
+}
+
+#inner #recent_listings .listing_block ul.listing_list {
+	font-size:0.9em;
+	border-bottom:1px dotted #ccc;
+}
+
+#inner #recent_listings .listing_block li.single_listing_home {
+	padding:5px 0;
+	border-top:1px dotted #ccc;
+	text-align:center;
+}
+
+#inner #recent_listings .listing_block li.single_listing_home span {
+	display:block;
+}
+
+#inner #recent_listings .listing_block li.single_listing_home span.price a {
+	color:#060;
+}
+
+#inner #recent_listings .listing_block li.single_listing_home span.price a:hover{
+	color:#3C0;
+}
+	
+#inner #recent_listings .listing_block li.single_listing_home span.date {
+}
+
+/*********************
+=3gb SINGLE LISTINGS
+*********************/
+
+.listing_block {
+	padding:10px 0;
+}
+
+	/* Image Gallery */
+
+.listing_images {
+	overflow:hidden;
+	padding:0 10px;
+}
+
+.listing_images .image_single {
+	float:left;
+	width:220px;
+	height:220px;
+	display:block;
+	padding:20px;
+}
+
+.listing_images .image_single a.listing_img {
+	width:220px;
+	height:220px;
+	display:block;
+}
 
 /* layout options */
 .content-sidebar #content, .sidebar-content #content {}

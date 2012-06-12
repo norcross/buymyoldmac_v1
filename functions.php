@@ -31,8 +31,15 @@ require_once('lib/rkv-cleanup.php');	// cleanup
 /* custom scripts */
 
 function bfg_scripts() { 
+	if (is_singular('listings') ) :
+		wp_enqueue_script('colorbox', CHILD_URL.'/lib/js/jquery.colorbox.js', array('jquery'), null, TRUE);
+		wp_enqueue_style( 'colorbox-style', CHILD_URL . '/lib/css/colorbox.css', false, null, 'all' );
+	endif;
+		
 	wp_enqueue_script('bfg_custom_scripts', CHILD_URL.'/lib/js/bmm.init.js', array('jquery'), null, TRUE);
+
 }
+
 
 // adding it to the header
 add_action('wp_enqueue_scripts', 'bfg_scripts');
@@ -42,7 +49,7 @@ add_action('wp_enqueue_scripts', 'bfg_scripts');
 
 /************* CHILD THEME IMAGE SIZES ******************/
 add_image_size( 'bfg_large_img', 620, 240, TRUE );
-add_image_size( 'bfg_medium_img', 225, 225, TRUE );
+add_image_size( 'bfg_medium_img', 220, 220, TRUE );
 add_image_size( 'bfg_tiny_img', 45, 45, TRUE );
 
 

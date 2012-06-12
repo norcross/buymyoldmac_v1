@@ -6,7 +6,7 @@ get_header();
         <div class="post-2 page type-page status-publish hentry">
     
             <div class="entry-content">
-            <?php the_content(); ?>
+            <?php the_excerpt(); ?>
             </div>
     
         </div>
@@ -15,10 +15,7 @@ get_header();
     <div id="sidebar" class="sidebar widget-area">
     <?php get_sidebar(); ?>
     </div>
-</div>
 
-<div id="recent_listings">
-	<?php echo rkv_recent_home(); ?>
 </div>
     
 <?php
