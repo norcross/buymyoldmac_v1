@@ -56,6 +56,14 @@ add_image_size( 'bfg_tiny_img', 45, 45, TRUE );
 
 /************* CHILD THEME FUNCTIONS ********************/
 
+function rkv_typekit_head() { ?>
+
+<script type="text/javascript" src="http://use.typekit.com/dbz8xoq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<?php }
+
+add_action('wp_head', 'rkv_typekit_head', 5);
 
 // Customizes Footer text
 function bfg_footer_cred($bfg_ft) {

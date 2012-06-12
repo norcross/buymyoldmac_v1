@@ -13,6 +13,7 @@ Template Version: 1.8
 /******************************************************************
 TABLE OF CONTENTS
 
+
 To skip to a certain section, search for "=01" where the number is
 the section you're looking for.
 
@@ -155,7 +156,7 @@ h1 { font-size: 2em; }
 p { -webkit-hyphens: auto; -moz-hyphens: auto; -epub-hyphens: auto; hyphens: auto; margin: 0; }
 ol,ul { list-style-type: none; } 
 abbr[title] { border-bottom: 1px dotted; }
-b,strong, { font-weight: bold; }
+b,strong, { font-weight: 700; }
 dfn,em { font-style: italic; }
 small,sub,sup { font-size: 75%; }
 sub,sup { line-height: 0; position: relative; vertical-align: baseline; }
@@ -394,6 +395,20 @@ the speed of your CSS. Don't overdue it. :)
 }
 
 /******************************************************************
+typekit
+
+BODY
+font-family: "proxima-nova", helvetica, arial, sans-serif;
+font weights: 500 (regular)
+700 (bold)
+
+HEADLINE
+
+font-family: "arvo", rockwell, georgia, serif;
+weights: 400 / 700
+******************************************************************/
+
+/******************************************************************
 =03 BASE MOBILE STYLES
 Be light and don't over style since everything here will be
 loaded by mobile devices. You want to keep it as minimal as
@@ -403,9 +418,10 @@ possible. Don't use px, you'll want to use %s or ems.
 body {
 	background-color: #F2F2F2;
 	color: #333333;
-	font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	font-family: "proxima-nova", helvetica, arial, sans-serif;
     font-size: 1em;
 	line-height:1.6em;
+	font-weight:500;
 }
 
 /*********************
@@ -484,9 +500,10 @@ make a title look like an H1, you simply add the .h1
 class to it. ( i.e. <h5 class="h1"> ). So easy.
 *********************/
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5 {
-	font-family: sans-serif;
+	font-family: "arvo", rockwell, georgia, serif;
 	line-height: 1.25em;
 	margin: 0 0 10px;
+	font-weight:400;
 }
 
 h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {}
