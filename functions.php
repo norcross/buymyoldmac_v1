@@ -61,6 +61,8 @@ add_filter('genesis_footer_creds_text', 'bfg_footer_cred');
 
 /************* FORM FUNCTIONS ********************/
 
+// image resize function: http://chopapp.com/#n9bqd41c
+
 function rkv_listing_title_fix ($form){
 
     $price		= $_POST['input_11'];

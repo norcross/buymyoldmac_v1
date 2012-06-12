@@ -47,6 +47,42 @@ function rkv_listing_block() {
 	
 }
 
+// image resizer
+
+function rkv_listing_gallery() {
+
+	global $post;
+	// get attachment images
+	$images	= get_children( array(
+			'post_parent'		=> $post->ID,
+			'post_mime_type'	=> 'image',
+			'numberposts'		=> -1
+			));
+
+	// set count for image relations
+	$count = 0;
+
+	// output gallery
+	foreach ($images as $image) {
+		$image_id	= $image->ID;
+		$image_name	= $image->post_title;
+		$image_desc	= $image->post_content;
+		$thumb		= wp_get_attachment_image_src( $image_id, 'bfg_medium_img' );
+		$full		= wp_get_attachment_image_src( $image_id, 'large' );
+		
+		// begin single images
+		echo '<div class="image_single">';
+		echo '<a href="'.$full[0].'">';
+		echo '<img src="'.$thumb[0].'" class="listing_img">';
+		echo '</a>';
+		echo '</div>';
+		// end each image output
+	}
+	// end output gallery
+
+}
+
+
 function rkv_listing_return() {
 	echo '<p><a href="'.get_bloginfo('url').'/listings/" title="Return To All Listings">&laquo; Return To All Listings</a></p>';
 }

@@ -104,7 +104,8 @@ function rkv_metaboxes( array $meta_boxes ) {
 					'check'		=> 'Check',
 
 				),
-			),						
+			),	
+/*								
 			array(
 				'name' => 'Image One',
 				'desc' => 'Upload an image or enter an URL.',
@@ -129,10 +130,10 @@ function rkv_metaboxes( array $meta_boxes ) {
 				'id'   => $prefix . 'bmm_image_4',
 				'type' => 'file',
 			),
-
+*/
 			array(
 				'name' => 'Custom Title',
-				'desc' => '',
+				'desc' => 'Used for SEO title tag',
 				'id'   => $prefix . 'bmm_titlefix',
 				'type' => 'text',
 			),

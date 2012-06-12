@@ -745,6 +745,15 @@ h6, .h6 {
 *********************/
 #content {}
 
+
+
+#content img {
+max-width: 95%;
+height: auto;
+}
+
+
+
 /* layout options */
 .content-sidebar #content, .sidebar-content #content {}
 
