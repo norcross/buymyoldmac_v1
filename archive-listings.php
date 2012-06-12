@@ -43,7 +43,7 @@ get_header();
     
                         // build out listing columns
                             echo '<li class="single_listing_home">';
-                            echo '<span class="price"><a href="'.$link.'" title="'.$model[0]->name.'">$'.number_format($price, 2, '.', ',').'</a></span>';
+                            echo '<span class="price"><a href="'.$link.'" title="'.$model[0]->name.'">$'.number_format($price, 2, '.', ',').'</a></span> - ';
                             echo '<span class="date"><a href="'.$link.'" title="'.$model[0]->name.'">'.$date.'</a></span>';
                             echo '</li>';
     
